@@ -182,19 +182,31 @@ const availableButton = document.querySelector("#show-available");
 const adoptedButton = document.querySelector("#show-adopted");
 const sortSelect = document.querySelector("#sort-animals");
 
-/*
- * TODO #5: Connect the controls to updateDisplay().
- *
- * Add click listeners to the three filter buttons. Each callback should set
- * activeFilter to "all", "available", or "adopted", then call
- * updateDisplay().
- *
- * Add a change listener to sortSelect. Its callback should copy
- * sortSelect.value into activeSort, then call updateDisplay().
- *
- * Note: When this TODO is complete, every part of the app should work.
- * Go back and test the filter and sort code you wrote in TODO #3.
- */
+
+    // Show all the animals when All is clicked.
+    allButton.addEventListener("click", function() {
+        activeFilter = "all";
+        updateDisplay();
+    });
+
+    // Show only animals that are available.
+    availableButton.addEventListener("click", function() {
+        activeFilter = "available";
+        updateDisplay();
+    });
+
+    // Show only animals that have been adopted.
+    adoptedButton.addEventListener("click", function() {
+        activeFilter = "adopted";
+        updateDisplay();
+    });
+
+    // Change the order when someone picks a sort option.
+    sortSelect.addEventListener("change", function() {
+        activeSort = sortSelect.value;
+        updateDisplay();
+    });
+
 
 // Display the original list and the count when the page first opens.
 displayAnimals(animals);
