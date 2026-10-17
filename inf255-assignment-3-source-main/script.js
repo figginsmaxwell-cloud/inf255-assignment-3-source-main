@@ -157,21 +157,20 @@ function updateDisplay() {
 // ------------------------------------
 
 function updateCount() {
-	/*
-	 * TODO #4: Show how many animals are still available.
-	 *
-	 * 1. Select the #animal-count paragraph.
-	 * 2. Use filter() on the full animals array (not just the visible
-	 *    cards) to find the animals that are not adopted.
-	 * 3. Set the paragraph's textContent to a message like:
-	 *
-	 *      4 of 8 animals are available for adoption.
-	 *
-	 *    Calculate both numbers. Do not type 4 or 8 directly.
-	 *
-	 * Note: When this TODO is complete, the message appears when the page
-	 * opens and changes every time an animal is adopted or returned.
-	 */
+
+    // Find where the animal count goes on the page.
+    const countElement = document.querySelector("#animal-count");
+
+    // Count the animals that are not adopted.
+    const availableAnimals = animals.filter(function(animal) {
+        return animal.adopted === false;
+    });
+
+    // Show how many animals are still available.
+    countElement.textContent = availableAnimals.length +
+        " of " + animals.length +
+        " animals are available for adoption.";
+
 }
 
 // ------------------------------------
